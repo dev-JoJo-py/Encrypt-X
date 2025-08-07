@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EncryptX Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00f5a0;
+      --bg: #0e0e10;
+      --card-bg: #1c1c1f;
+      --text: #e5e5e5;
+      --muted: #aaa;
+      --accent: #00dba5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .terminal {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 20px 40px rgba(0, 245, 160, 0.05);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      color: #ff6b6b;
+      margin-top: 10px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      font-size: 14px;
+      color: var(--text);
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+
+    .access-button {
+      background-color: var(--primary);
+      color: #0e0e10;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s;
+    }
+
+    .access-button:hover {
+      background-color: var(--accent);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>ENCRYPTX | SECURE ACCESS TERMINAL</h1>
+
+    <% if (locals.code) { %>
+      <h4>"Invalid Code or Code has Expired"</h4>
+    <% } else if (locals.sec_code) { %>
+      <h3>Your Key:</h3>
+      <h4>"<%= sec_code %>"</h4>
+    <% } else { %>
+      <pre>
+We encrypt your texts with military-grade encryption.
+
+Simple UI, seamless access from anywhere.
+
+Your data will auto-delete after the set expiry (default: 60 minutes).
+      </pre>
+    <% } %>
+
+    <a href="/code">
+      <button class="access-button">Encrypt Text</button>
+    </a>
+
+    <a href="/info">
+      <button class="access-button">Retrieve Data</button>
+    </a>
+  </div>
+</body>
+</html>
